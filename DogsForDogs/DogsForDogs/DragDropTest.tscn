@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://placeholder_ketchup.png" type="Texture" id=1]
+[ext_resource path="res://TextureButton1.gd" type="Script" id=2]
+[ext_resource path="res://placeholder_relish.png" type="Texture" id=3]
+[ext_resource path="res://placeholder_mustard.jpg" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer"]
+margin_right = 200.0
+margin_bottom = 217.0
+
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/CenterContainer"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 208.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/HBoxContainer"]
+margin_left = 204.0
+margin_right = 304.0
+margin_bottom = 217.0
+
+[node name="TextureButton2" type="TextureButton" parent="Control/HBoxContainer/CenterContainer2"]
+margin_right = 100.0
+margin_bottom = 217.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 4 )
+script = ExtResource( 2 )
+
+[node name="CenterContainer3" type="CenterContainer" parent="Control/HBoxContainer"]
+margin_left = 308.0
+margin_right = 508.0
+margin_bottom = 217.0
+
+[node name="TextureButton3" type="TextureButton" parent="Control/HBoxContainer/CenterContainer3"]
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 208.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -3, 0 )
