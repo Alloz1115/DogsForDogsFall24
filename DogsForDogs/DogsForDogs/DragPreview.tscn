@@ -2,5 +2,5 @@
 
 [ext_resource path="res://DragPreview.gd" type="Script" id=1]
 
-[node name="DragPreview" type="Sprite"]
+[node name="DragPreview" type="Sprite2D"]
 script = ExtResource( 1 )

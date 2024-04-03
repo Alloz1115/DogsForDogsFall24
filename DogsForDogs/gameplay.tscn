@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ivl82jjco7kt"]
+
+[ext_resource type="Script" path="res://scripts/gameplay.gd" id="1_s4k3h"]
+[ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://dogCustomer.tscn" id="8_bv8ky"]
+[ext_resource type="PackedScene" uid="uid://cr55boaqlwux" path="res://droppable_area.tscn" id="9_p501i"]
+[ext_resource type="PackedScene" uid="uid://cab13iotgbrqg" path="res://droppable_item.tscn" id="10_w4rik"]
+
+[node name="currentScene" type="Node2D"]
+script = ExtResource("1_s4k3h")
+
+[node name="orderCard" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 538.0
+offset_bottom = 674.0
+
+[node name="ItemList" type="ItemList" parent="orderCard"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 529.0
+offset_bottom = 661.0
+
+[node name="DogCustomer" parent="." groups=["customers"] instance=ExtResource("8_bv8ky")]
+
+[node name="droppableArea" parent="." groups=["droppable"] instance=ExtResource("9_p501i")]
+position = Vector2(907, 426)
+
+[node name="droppableItem" parent="." instance=ExtResource("10_w4rik")]
+position = Vector2(860, 297)

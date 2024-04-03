@@ -17,7 +17,7 @@ func _ready():
 
 
 
-func get_drag_data(position: Vector2):
+func _get_drag_data(position: Vector2):
 	var slot = get_parent().get_name()
 	
 	var data = {}
@@ -32,14 +32,14 @@ func get_drag_data(position: Vector2):
 	
 	return data
 	
-func can_drop_data(position, data):
+func _can_drop_data(position, data):
 	var target_slot = get_parent().get_name()
 	data["target_texture_normal"] = texture_normal
 	data ["target_texture_pressed"] = texture_pressed
 	
 	return true
 
-func drop_data(position, data):
+func _drop_data(position, data):
 	
 	data["origin_node"].texture_normal = data["target_texture_normal"]
 	data["origin_node"].texture_pressed = data["target_texture_pressed"]
