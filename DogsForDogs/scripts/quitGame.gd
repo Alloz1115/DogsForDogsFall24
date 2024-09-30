@@ -1,5 +1,5 @@
 extends Button
-
+# quits game when _on_pressed is called
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

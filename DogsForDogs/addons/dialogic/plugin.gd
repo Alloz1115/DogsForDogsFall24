@@ -41,7 +41,7 @@ func _enter_tree() -> void:
 	_make_visible(false)
 
 	# Auto-update the singleton path for alpha users
-	# TODO remove at some point during beta or later
+
 	remove_autoload_singleton(PLUGIN_NAME)
 	add_autoload_singleton(PLUGIN_NAME, PLUGIN_HANDLER_PATH)
 

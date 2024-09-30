@@ -2,30 +2,20 @@ extends PanelContainer
 @export var canDuplicate: bool = false
 @export_enum("BUN:0", "HOTDOG:1", "TOPPINGS:2", "DRINK:3") var slotType: int
 @onready var texture_rect = $TextureRect
-var DRINK = 4
-var spacingBetweenItems = 20
+const DRINK = 3
+const spacingBetweenItems = 20
 var items = ["bunChoice", "hotDogChoice", "toppingsChoice", "drinkChoice"]
-# NEED TO CHANGE THIS LATER
-var slotData = {
-		"bunChoice" = 0,
-		"hotDogChoice" = 0,
-		"toppingsChoice" = 0, # this may get turned into an array later
-		"drinkChoice" = 0
-	}
-# TODO change metadata on textures when swapping occurs
+# might need to change this later
 
 func _ready():
-	# set up cardData dictionary
-	if($TextureRect.texture != null):
-		slotData[slotType] = 1
-		print("slot added")
-		# get slotType and add it 
+	pass
 
-
+# gets drag preview and returns the texture 
 func _get_drag_data(at_position):
 	set_drag_preview(get_preview())
 	return texture_rect
  
+# checks if data can be dropped
 func _can_drop_data(_pos, data):
 	if "slotType" in data.get_parent():
 		var isSameType = data.get_parent().slotType == slotType
@@ -53,7 +43,6 @@ func _drop_data(_pos, data):
 			print("SPACE IS OCCUPIED")
 			# get child count and create another child
 			var numOfCurrentChildren = destinationTextureNode.get_child_count(false)
-			# var newTextureChild = TextureRect.new()
 			var newTextureChild = $TextureRect.duplicate()
 			newTextureChild.texture = texture_rect.texture
 			newTextureChild.mouse_filter = 1
@@ -90,22 +79,17 @@ func _drop_data(_pos, data):
 				index.reparent(destinationTextureNode, false)
 			for index2 in arrayOfData:
 				index2.reparent(data, false)
-		# transers, but does not swap
+		# transfer, but does not swap textures
 		elif onlyDataCanDuplicate && !spaceIsOccupied:
 			var temp = texture_rect.texture 
 			texture_rect.texture = data.texture
 		# recount amount of textures here and update dictionary
 		var firstArray = destinationTextureNode.get_children(false)
 		var secondArray = data.get_children(false)
-		# clear dictionary first
-		for ind in slotData:
-			slotData[ind] = 0
-		for index in firstArray:
-			var slot = index.get_meta("slotType") # get the entry in an array
-			var dictionarySlot = items[slot]
-			slotData[dictionarySlot] = slotData[dictionarySlot] + 1
-		print(slotData)
 
+		# print what the new slot result is (what is in it now?)
+
+# makes a preview of the object being dragged
 func get_preview():
 	# could update this to show the current hot dog
 	var preview_texture = TextureRect.new()
