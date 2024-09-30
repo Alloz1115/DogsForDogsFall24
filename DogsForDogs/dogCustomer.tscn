@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccjfts8kkhc6h"]
+[gd_scene load_steps=9 format=3 uid="uid://ccjfts8kkhc6h"]
 
 [ext_resource type="Script" path="res://scripts/dogCustomer.gd" id="1_7vb3y"]
 [ext_resource type="Texture2D" uid="uid://c7vdsnds8q5eu" path="res://sprites/RectangleIconSlot.png" id="1_enaje"]
@@ -77,31 +77,9 @@ _data = {
 "test": SubResource("Animation_8ygde")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5y5sn"]
-animation = &"hop"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e5yoj"]
-animation = &"slide"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tftp8"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_enbv2"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_udy0t"]
-states/End/position = Vector2(599.999, 98.24)
-states/Start/position = Vector2(145.333, 96.4206)
-states/hop/node = SubResource("AnimationNodeAnimation_5y5sn")
-states/hop/position = Vector2(252, 96.3961)
-states/slide/node = SubResource("AnimationNodeAnimation_e5yoj")
-states/slide/position = Vector2(353.186, 99.3378)
-transitions = ["Start", "hop", SubResource("AnimationNodeStateMachineTransition_tftp8"), "hop", "slide", SubResource("AnimationNodeStateMachineTransition_enbv2")]
-
 [node name="DogCustomer" type="CharacterBody2D"]
-position = Vector2(300, 200)
+process_mode = 1
+position = Vector2(-2, 3)
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_7vb3y")
@@ -110,15 +88,6 @@ script = ExtResource("1_7vb3y")
 sprite_frames = SubResource("SpriteFrames_6bl8n")
 frame = 1
 frame_progress = 0.515411
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-unique_name_in_owner = true
-root_node = NodePath("%AnimationTree/../AnimatedSprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_snkfj")
-}
-tree_root = SubResource("AnimationNodeStateMachine_udy0t")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")
@@ -133,5 +102,4 @@ offset_right = -47.0
 offset_bottom = -88.0
 text = "See Order"
 
-[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

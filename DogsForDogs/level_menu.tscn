@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://ci4acl0fbmg5w"]
+[gd_scene load_steps=2 format=3 uid="uid://ci4acl0fbmg5w"]
 
-[node name="levelMenu" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/nextLevel.gd" id="1_s6xju"]
+
+[node name="levelMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s6xju")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_right = 1156.0
 offset_bottom = 655.0
 
@@ -11,8 +18,11 @@ layout_mode = 2
 
 [node name="nextLevel" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "next level"
+text = "Next Level"
 
-[node name="something" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="quitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "some button here idk"
+text = "Quit Game"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/nextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]

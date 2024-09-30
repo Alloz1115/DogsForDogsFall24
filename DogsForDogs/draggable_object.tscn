@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://joy0gsvfu01k"]
+
+[ext_resource type="Script" path="res://scripts/draggableObject.gd" id="1_bw8d2"]
+
+[node name="slot" type="PanelContainer"]
+process_mode = 1
+custom_minimum_size = Vector2(60, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bw8d2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+layout_mode = 2
+metadata/slotType = 3
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+mouse_filter = 2
