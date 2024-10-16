@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs71lhfmfy5rg"]
+[gd_scene load_steps=3 format=3 uid="uid://cr55boaqlwux"]
 
 [sub_resource type="GDScript" id="GDScript_7yjr5"]
 script/source = "extends StaticBody2D

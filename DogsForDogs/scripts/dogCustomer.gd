@@ -51,4 +51,3 @@ func _on_button_pressed():
 	# finishes creating order card and deletes order button
 	newCard.setOrder()
 	$Button.queue_free()
-
