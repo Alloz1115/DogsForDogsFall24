@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ivl82jjco7kt"]
+[gd_scene load_steps=9 format=3 uid="uid://ivl82jjco7kt"]
 
 [ext_resource type="Script" path="res://scripts/gameplay.gd" id="1_s4k3h"]
 [ext_resource type="Resource" uid="uid://hx2btlro1lfo" path="res://testing/Inventory.tres" id="2_heohg"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ctp055ogy1sqt" path="res://sprites/icon.svg" id="6_3l0qk"]
 [ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://dogCustomer.tscn" id="8_bv8ky"]
 [ext_resource type="PackedScene" uid="uid://b30ugjd52bga4" path="res://test_draggable.tscn" id="8_d87e7"]
-[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://level_menu.tscn" id="8_gg1r6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2unb"]
 size = Vector2(157, 84)
@@ -31,6 +30,7 @@ mustardAmount = 1
 drinkType = 1
 
 [node name="FiniteDrink" parent="." instance=ExtResource("5_0f0h3")]
+visible = false
 offset_left = 663.0
 offset_top = 211.0
 offset_right = 723.0
@@ -41,6 +41,7 @@ slotType = 3
 texture = ExtResource("6_3l0qk")
 
 [node name="InfiniteHotDog" parent="." instance=ExtResource("5_0f0h3")]
+visible = false
 offset_left = 350.0
 offset_top = 211.0
 offset_right = 478.0
@@ -68,6 +69,7 @@ offset_bottom = 121.0
 slotType = 3
 
 [node name="orderSubmit" type="Area2D" parent="."]
+visible = false
 position = Vector2(100, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="orderSubmit"]
@@ -99,6 +101,7 @@ slotType = 1
 [node name="TextureRect" parent="orderSubmit/hotDogSubmitSlot" index="0" groups=["submitSlot"]]
 
 [node name="TemporaryLabels" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -159,8 +162,6 @@ offset_top = 500.0
 offset_right = 350.0
 offset_bottom = 537.0
 text = "Order Card Submit"
-
-[node name="levelMenu" parent="." instance=ExtResource("8_gg1r6")]
 
 [connection signal="area_entered" from="orderSubmit" to="." method="_on_order_submit_area_entered"]
 [connection signal="area_exited" from="orderSubmit" to="." method="_on_order_submit_area_exited"]

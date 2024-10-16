@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://hfsonbule0om"]
+
+[ext_resource type="Script" path="res://item_stack_gui.gd" id="1_fb3eg"]
+[ext_resource type="Texture2D" uid="uid://c7vdsnds8q5eu" path="res://sprites/RectangleIconSlot.png" id="2_0d1ly"]
+
+[node name="Panel" type="Panel"]
+script = ExtResource("1_fb3eg")
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("2_0d1ly")
+centered = false

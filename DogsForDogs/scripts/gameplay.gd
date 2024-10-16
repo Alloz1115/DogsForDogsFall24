@@ -9,6 +9,9 @@ signal levelComplete
 var customersServed : int = 0
 var items = ["bunChoice", "hotDogChoice", "toppingsChoice", "drinkChoice"]
 
+# this line is for testing
+@export var inventory: Inventory
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,6 +27,8 @@ func _ready():
 		print("There are currently " + str(arrayNumCustomers.size()) + " customers.")
 		# save amount of customers present 
 		numOfCustomers = arrayNumCustomers.size()
+	# THIS IS JUST TESTING
+	Dialogic.start("res://dialogue/testDialogue.dtl")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

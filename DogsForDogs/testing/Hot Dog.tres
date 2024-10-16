@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://3cxr2223fgid"]
+
+[ext_resource type="Script" path="res://test_inventoryItem.gd" id="1_ba475"]
+[ext_resource type="Texture2D" uid="uid://c7vdsnds8q5eu" path="res://sprites/RectangleIconSlot.png" id="2_htdnt"]
+
+[resource]
+script = ExtResource("1_ba475")
+name = "Hot Dog"
+texture = ExtResource("2_htdnt")

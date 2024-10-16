@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtx1irl8760an"]
+
+[ext_resource type="Script" path="res://new_order_card_ui.gd" id="1_qp7a0"]
+[ext_resource type="Texture2D" uid="uid://ctp055ogy1sqt" path="res://sprites/icon.svg" id="2_3n7df"]
+
+[node name="NewOrderCardUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp7a0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 260.0
+
+[node name="blankItem" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3n7df")
+
+[node name="blankItem2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3n7df")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://hfsonbule0om"]
+
+[ext_resource type="Script" path="res://item_stack_gui.gd" id="1_fb3eg"]
+
+[node name="Panel" type="Panel"]
+script = ExtResource("1_fb3eg")
+
+[node name="Item" type="Sprite2D" parent="."]
+centered = false

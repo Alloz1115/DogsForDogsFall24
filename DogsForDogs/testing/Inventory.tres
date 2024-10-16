@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=12 format=3 uid="uid://hx2btlro1lfo"]
+
+[ext_resource type="Script" path="res://test_inventory.gd" id="1_yuiqq"]
+[ext_resource type="Script" path="res://test_inventoryItem.gd" id="2_30rxy"]
+[ext_resource type="Texture2D" uid="uid://c7vdsnds8q5eu" path="res://sprites/RectangleIconSlot.png" id="3_kyk64"]
+[ext_resource type="Script" path="res://inventorySlot.gd" id="4_lawgm"]
+
+[sub_resource type="Resource" id="Resource_6a2w3"]
+script = ExtResource("2_30rxy")
+name = "Hot Dog"
+texture = ExtResource("3_kyk64")
+
+[sub_resource type="Resource" id="Resource_ckm8y"]
+script = ExtResource("2_30rxy")
+name = ""
+
+[sub_resource type="Resource" id="Resource_8ixmh"]
+script = ExtResource("4_lawgm")
+inventorySlotItems = Array[ExtResource("2_30rxy")]([SubResource("Resource_6a2w3"), SubResource("Resource_ckm8y")])
+slotType = 0
+
+[sub_resource type="Resource" id="Resource_duho7"]
+script = ExtResource("2_30rxy")
+name = "bruh"
+texture = ExtResource("3_kyk64")
+
+[sub_resource type="Resource" id="Resource_xshoh"]
+script = ExtResource("4_lawgm")
+inventorySlotItems = Array[ExtResource("2_30rxy")]([SubResource("Resource_duho7")])
+slotType = 0
+
+[sub_resource type="Resource" id="Resource_dx5wd"]
+script = ExtResource("2_30rxy")
+name = ""
+
+[sub_resource type="Resource" id="Resource_wne5o"]
+script = ExtResource("4_lawgm")
+inventorySlotItems = Array[ExtResource("2_30rxy")]([SubResource("Resource_dx5wd")])
+slotType = 1
+
+[resource]
+script = ExtResource("1_yuiqq")
+slots = Array[ExtResource("4_lawgm")]([SubResource("Resource_8ixmh"), SubResource("Resource_xshoh"), SubResource("Resource_wne5o")])

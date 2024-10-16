@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b30ugjd52bga4"]
+
+[ext_resource type="Script" path="res://test_inventory_gui.gd" id="1_1lpf6"]
+[ext_resource type="PackedScene" uid="uid://wa6pf2ogd1bp" path="res://test_slot.tscn" id="1_s3khu"]
+
+[node name="TestDraggable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1lpf6")
+
+[node name="TestSlot" parent="." instance=ExtResource("1_s3khu")]
+layout_mode = 0
+
+[node name="TestSlot2" parent="." instance=ExtResource("1_s3khu")]
+layout_mode = 0
+offset_left = 168.0
+offset_right = 298.0
+
+[node name="TestSlot3" parent="." instance=ExtResource("1_s3khu")]
+layout_mode = 0
+offset_left = 323.0
+offset_top = -1.0
+offset_right = 453.0
+offset_bottom = 129.0

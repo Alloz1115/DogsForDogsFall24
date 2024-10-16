@@ -61,7 +61,6 @@ func _drop_data(_pos, data):
 				#reset position, then readjust'
 				print("READJUSTING")
 				children.global_position.y = startingPoint
-				print(children.global_position.y)
 				children.global_position.y -= spacingBetweenItems * intIterator
 				intIterator += 1
 			# makes original area null if it is not canDuplicate
@@ -86,7 +85,6 @@ func _drop_data(_pos, data):
 		# recount amount of textures here and update dictionary
 		var firstArray = destinationTextureNode.get_children(false)
 		var secondArray = data.get_children(false)
-
 		# print what the new slot result is (what is in it now?)
 
 # makes a preview of the object being dragged

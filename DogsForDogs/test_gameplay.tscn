@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://jew82lwixkt4"]
+
+[ext_resource type="PackedScene" uid="uid://b30ugjd52bga4" path="res://test_draggable.tscn" id="1_64f68"]
+
+[node name="currentScene" type="Node2D"]
+
+[node name="TestDraggable" parent="." instance=ExtResource("1_64f68")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 350.0
+offset_top = 307.0
+offset_right = 350.0
+offset_bottom = 307.0
+grow_horizontal = 1
+grow_vertical = 1
