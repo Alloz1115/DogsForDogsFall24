@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://pje43bjk3dyw"]
+
+[ext_resource type="Script" path="res://item_stack_gui.gd" id="1_dbd34"]
+
+[node name="Panel" type="Panel"]
+offset_right = 130.0
+offset_bottom = 130.0
+mouse_filter = 1
+script = ExtResource("1_dbd34")
+
+[node name="item" type="Sprite2D" parent="."]

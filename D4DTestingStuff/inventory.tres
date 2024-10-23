@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=13 format=3 uid="uid://71qjf8v0vh0v"]
+
+[ext_resource type="Resource" uid="uid://dgxtuly7rfqfg" path="res://inventoryItem.tres" id="1_f5s7q"]
+[ext_resource type="Script" path="res://inventoryItem.gd" id="2_87a54"]
+[ext_resource type="Script" path="res://inventory.gd" id="2_ymns8"]
+[ext_resource type="Script" path="res://inventorySlot.gd" id="3_6ft4k"]
+[ext_resource type="Texture2D" uid="uid://c3t738x8wr6s4" path="res://sprites/RectangleIconSlot.png" id="3_q3h7s"]
+
+[sub_resource type="Resource" id="Resource_b5jg2"]
+script = ExtResource("2_87a54")
+name = "testing"
+texture = ExtResource("3_q3h7s")
+
+[sub_resource type="Resource" id="Resource_wx66i"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([SubResource("Resource_b5jg2")])
+foodType = 0
+
+[sub_resource type="Resource" id="Resource_6cv50"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 1
+
+[sub_resource type="Resource" id="Resource_fni1n"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([ExtResource("1_f5s7q"), ExtResource("1_f5s7q"), ExtResource("1_f5s7q")])
+foodType = 0
+
+[sub_resource type="Resource" id="Resource_6gppr"]
+script = ExtResource("3_6ft4k")
+slotName = 3
+item = Array[ExtResource("2_87a54")]([])
+foodType = 4
+
+[sub_resource type="Resource" id="Resource_bgv2h"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 4
+
+[sub_resource type="Resource" id="Resource_35m62"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 4
+
+[resource]
+script = ExtResource("2_ymns8")
+slots = Array[ExtResource("3_6ft4k")]([SubResource("Resource_wx66i"), SubResource("Resource_6cv50"), SubResource("Resource_fni1n"), SubResource("Resource_6gppr"), SubResource("Resource_bgv2h"), SubResource("Resource_35m62")])

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ivl82jjco7kt"]
+
+[ext_resource type="Script" path="res://Scenes/gameplay.gd" id="1_s4k3h"]
+[ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://inventory_gui.tscn" id="5_52s45"]
+[ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://Scenes/dogCustomer.tscn" id="8_bv8ky"]
+
+[node name="currentScene" type="Node2D"]
+script = ExtResource("1_s4k3h")
+
+[node name="DogCustomer" parent="." groups=["customers"] instance=ExtResource("8_bv8ky")]
+position = Vector2(-245, 548)
+entryDelaySeconds = 5
+
+[node name="DogCustomer2" parent="." groups=["customers"] instance=ExtResource("8_bv8ky")]
+position = Vector2(1389, 535)
+entryDelaySeconds = 2
+
+[node name="DogCustomer3" parent="." groups=["customers"] instance=ExtResource("8_bv8ky")]
+position = Vector2(1257, 537)
+
+[node name="DogCustomer4" parent="." groups=["customers"] instance=ExtResource("8_bv8ky")]
+position = Vector2(-102, 548)
+entryDelaySeconds = 8
+
+[node name="InventoryGUI" parent="." instance=ExtResource("5_52s45")]
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 476.0
+offset_top = 150.0
+offset_right = 841.0
+offset_bottom = 173.0
+text = "Ticket Slots"
+horizontal_alignment = 1
