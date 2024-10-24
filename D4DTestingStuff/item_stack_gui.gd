@@ -3,16 +3,13 @@ extends Panel
 class_name item_stack_gui
 var inventorySlot: InventorySlot
 @onready var itemSprite: Sprite2D = $item
+var stackBuffer: int = 15
 
 func update():
 	if !inventorySlot || inventorySlot.item.is_empty(): return
 	# go through inventorySlot.item array and update 
 	var currentNumItemNodes = $".".get_children().size()
 	var numSubItems = inventorySlot.item.size() 
-	print("current children is " + str($".".get_children().size()))
-	print("current subItems is " + str(inventorySlot.item.size()))
-	
-	# these are the same??
 	
 	#duplicates nodes 
 	if currentNumItemNodes < numSubItems:
@@ -28,8 +25,7 @@ func update():
 	for node in newNodesList.size():
 		newNodesList[node].visible = true
 		newNodesList[node].texture = inventorySlot.item[node].texture
-		newNodesList[node].position += Vector2(0, 15*node)
-		
+		newNodesList[node].position += Vector2(0, stackBuffer*node)
 
 func resetChildrenPositions():
 	for child in $".".get_children():
