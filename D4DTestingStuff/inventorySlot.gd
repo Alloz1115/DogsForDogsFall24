@@ -19,7 +19,7 @@ func createNewSlot():
 
 	var testing = InventoryItem.new()
 	testing.name = "testing"
-	testing.texture = load("res://RectangleIconSlot.png")
+	testing.texture = load("res://sprites/RectangleIconSlot.png")
 	item.append(testing)
 	
 	# for hotDogs in numHotDogs: 

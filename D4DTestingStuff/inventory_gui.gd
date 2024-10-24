@@ -76,8 +76,12 @@ func onSlotClicked(slot):
 
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
+	print("debugger")
+	print(str(itemInHand.inventorySlot.item.size()))
 	add_child(itemInHand)
 	updateItemInHand()
+	# itemInHand is still 0
+	
 
 func insertItemInSlot(slot):
 	var item = itemInHand
@@ -95,12 +99,16 @@ func swapItems(slot):
 
 func stackItems(slot):
 	var slotItem: item_stack_gui = slot.itemStackGui
+	var amount: int = itemInHand.inventorySlot.item.size()
+	print("size of arr " + str(itemInHand.inventorySlot.item.size()))
+	print("size of arr " + str(slotItem.inventorySlot.item.size()))
 	slotItem.inventorySlot.item.append_array(itemInHand.inventorySlot.item)
+	#change this to add item?
 	# makes itemInHand's slot items empty just in case
-	itemInHand.inventorySlot.item.clear()
+	print("append completed, now " + str(slotItem.inventorySlot.item.size()))
+	#itemInHand.inventorySlot.item.clear()
 	
 	# TODO change this from idk man 
-	#slotItem.inventorySlot.amount = totalAmount
 	remove_child(itemInHand)
 	itemInHand = null
 	

@@ -1,10 +1,5 @@
 extends Control
 
-# add textures here
-var defaultButtonTexture = preload("res://labelRectangle.png")
-var otherTexture = preload("res://RectangleIconSlot.png")
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
