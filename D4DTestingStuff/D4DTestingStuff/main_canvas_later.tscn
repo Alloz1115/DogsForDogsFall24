@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgtput0fiswan"]
+
+[ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://inventory_gui.tscn" id="1_dkxin"]
+[ext_resource type="Script" path="res://main_canvas_later.gd" id="1_hmqjk"]
+[ext_resource type="Resource" uid="uid://71qjf8v0vh0v" path="res://inventory.tres" id="2_ikotj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_hmqjk")
+inventory = ExtResource("2_ikotj")
+
+[node name="InventoryGUI" parent="." instance=ExtResource("1_dkxin")]
+process_mode = 3
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 27.0
+grow_horizontal = 1
+grow_vertical = 1
