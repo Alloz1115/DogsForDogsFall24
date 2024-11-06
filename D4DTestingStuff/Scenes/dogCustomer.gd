@@ -25,6 +25,7 @@ func _physics_process(_delta):
 # fix animation
 func _on_button_pressed():
 	# TODO turn the newCard into a inventorySlot? 
+	print("CUSTOMER BUTTON PRESSED")
 	var ticketSlots = get_tree().get_nodes_in_group("Ticket Slot")
 
 	var ticketType = 4

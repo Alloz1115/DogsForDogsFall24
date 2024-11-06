@@ -3,6 +3,7 @@ extends Resource
 class_name InventorySlot
 
 @export_enum("GRILL", "DISPENSER", "PLATE", "TICKET") var slotName: int
+@export var customerOrderName: String
 @export var item: Array[InventoryItem]
 @export_enum("FOOD", "DRINK", "GRILL+FOOD", "DISPENSER+DRINK", "TICKET") var foodType: int
 

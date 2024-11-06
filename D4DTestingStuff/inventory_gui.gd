@@ -7,13 +7,44 @@ extends Control
 var itemInHand: item_stack_gui
 var ticketType: int = 4
 
+# import 
+signal checkIfAllOrdersDone(customers_served)
+signal levelComplete
+var customersServed : int = 0
+var numOfCustomers : int = 0
+
+
 func _ready():
 	connectSlots()
 	inventory.updated.connect(update)
 	update()
+	
+	$levelMenu.hide()
+	# prints the amount of customers in current scene
+	levelComplete.connect(_on_level_complete)
+	var array = get_tree().get_nodes_in_group("customers")
+	if array.is_empty():
+		print("There are no customers")
+	else:
+		print("There are " + str(array.size()) + " customers.")
+		numOfCustomers = array.size()
 
+
+func submitOrder():
+	customersServed += 1
+	print(customersServed)
+	emit_signal("checkIfAllOrdersDone", customersServed)
+	if(customersServed == numOfCustomers):
+		levelComplete.emit()
+
+func _on_level_complete():
+	get_tree().paused = true
+	$levelMenu.show()
+	
 # initial update for all slots
 func update():
+	print("inventory slots size " + str(inventory.slots.size()))
+	print("slots size " + str(slots.size()))
 	for i in range(min(inventory.slots.size(), slots.size())):
 		var inventorySlot: InventorySlot = inventory.slots[i]
 		
@@ -112,3 +143,33 @@ func updateItemInHand():
 
 func _input(event):
 	updateItemInHand()
+
+
+func _on_submit_button_pressed():
+	var foodSubmitSlot = get_tree().get_nodes_in_group("Food Submit")
+	var drinkSubmitSlot = get_tree().get_nodes_in_group("Drink Submit")
+	var ticketSubmitSlot = get_tree().get_nodes_in_group("Ticket Submit")
+	
+	if ticketSubmitSlot[0].CenterContainer.get_child_count() == 0:
+		print("Ticket Submit Slot is Empty")
+		return
+	
+	# get index to use in inventory
+	var index: int = slots.find(foodSubmitSlot)
+	
+	# start comparing
+	# if ticketSubmitSlot.CenterContainer.get_child_count() == 0 
+
+	# for order card slot, have something similar to slot_gui and compare with item[index].name
+	# var accuracy: int
+	# for items in orderCardSlot.item.size()-1 (to account for drink):
+	# DO THIS INSTEAD for itemIndex in min(foodSubmitSlot.item.size(), ticketSubmitSlot.item.size())
+		# if foodSubmitSlot.item.size(), ticketSubmitSlot.item.size(): print("Food is not accurate")
+		# if item[itemIndex].name == foodSlot[itemIndex].name
+		# accuracy ++
+	# these should match to the same drink
+	# if orderCardSlot.item[orderCardSlot.item.size()-1].inventoryItem.name == drinkSlot.inventoryItem.name 
+		# accuracy ++
+	#print(accuracy)
+	# TODO when order card is made, update customerOrderName to file name of customer
+	# when order submit, get node using file name to trigger customer events

@@ -23,6 +23,10 @@ position = Vector2(-102, 548)
 entryDelaySeconds = 8
 
 [node name="InventoryGUI" parent="." instance=ExtResource("5_52s45")]
+offset_left = -10.0
+offset_top = -6.0
+offset_right = -10.0
+offset_bottom = -6.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="."]

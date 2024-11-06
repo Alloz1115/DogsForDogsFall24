@@ -22,14 +22,15 @@ func takeItem():
 	var item = itemStackGui
 	container.remove_child(itemStackGui)
 	
-	print("debugging")
 	print(str(item.inventorySlot.item.size()))
 	inventory.removeSlot(itemStackGui.inventorySlot)
 	# set itemStackGui as null so that it is seen as empty
 	itemStackGui = null
-	print("debugging again ")
+
 	print(str(item.inventorySlot.item.size()))
 	return item
 
 func isEmpty():
 	return !itemStackGui
+
+

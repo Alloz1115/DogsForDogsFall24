@@ -25,7 +25,7 @@ func update():
 	for node in newNodesList.size():
 		newNodesList[node].visible = true
 		newNodesList[node].texture = inventorySlot.item[node].texture
-		newNodesList[node].position += Vector2(0, stackBuffer*node)
+		newNodesList[node].position = Vector2(0, stackBuffer*node)
 
 func resetChildrenPositions():
 	for child in $".".get_children():

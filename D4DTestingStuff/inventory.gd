@@ -30,17 +30,4 @@ func checkOrderAccuracy():
 	# get node 
 	# have three 
 	pass
-	# TODO get the three slots, the order card slot, the drink slot, and food slot
-	# use get nodes in group for this 
-	# differentiate each node by searching up their slot name WITH var foodSlot = foodSubmissionGroup,
-	# drinkSubmission group, and ticketSubmission group
-	# for order card slot, have something similar to slot_gui and compare with item[index].name
-	# var accuracy: int
-	# for items in orderCardSlot.item.size()-1 (to account for drink):
-		# if items.name == foodSlot[items].name
-		# accuracy ++
-	# these should match to the same drink
-	# if orderCardSlot.item[orderCardSlot.item.size()-1].inventoryItem.name == drinkSlot.inventoryItem.name 
-		# accuracy ++
-	#print(accuracy)
-	# idk what what is supposed to be here bruh
+	

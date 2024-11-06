@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=13 format=3 uid="uid://71qjf8v0vh0v"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=16 format=3 uid="uid://71qjf8v0vh0v"]
 
 [ext_resource type="Resource" uid="uid://dgxtuly7rfqfg" path="res://inventoryItem.tres" id="1_f5s7q"]
 [ext_resource type="Script" path="res://inventoryItem.gd" id="2_87a54"]
@@ -47,6 +47,24 @@ slotName = 0
 item = Array[ExtResource("2_87a54")]([])
 foodType = 4
 
+[sub_resource type="Resource" id="Resource_njjvh"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 0
+
+[sub_resource type="Resource" id="Resource_w46qr"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 1
+
+[sub_resource type="Resource" id="Resource_c2lec"]
+script = ExtResource("3_6ft4k")
+slotName = 0
+item = Array[ExtResource("2_87a54")]([])
+foodType = 4
+
 [resource]
 script = ExtResource("2_ymns8")
-slots = Array[ExtResource("3_6ft4k")]([SubResource("Resource_wx66i"), SubResource("Resource_6cv50"), SubResource("Resource_fni1n"), SubResource("Resource_6gppr"), SubResource("Resource_bgv2h"), SubResource("Resource_35m62")])
+slots = Array[ExtResource("3_6ft4k")]([SubResource("Resource_wx66i"), SubResource("Resource_6cv50"), SubResource("Resource_fni1n"), SubResource("Resource_6gppr"), SubResource("Resource_bgv2h"), SubResource("Resource_35m62"), SubResource("Resource_njjvh"), SubResource("Resource_w46qr"), SubResource("Resource_c2lec")])
