@@ -2,16 +2,17 @@ extends Resource
 
 class_name InventorySlot
 
-@export_enum("GRILL", "DRINK_DISPENSER", "BOX", "PLATE", "TICKET", "TRASH") var slotName: int
+@export_enum("GRILL", "DISPENSER", "BOX", "PLATE", "TICKET", "TRASH", "WATER", "COLA", "ROOTBEER") var slotName: int
 @export var item: Array[InventoryItem]
-@export_enum("FOOD", "DRINK", "GRILL+FOOD", "DISPENSER+DRINK", "TICKET") var foodType: int
+@export_enum("FOOD", "DRINK", "GRILL", "DISPENSER", "TICKET") var foodType: int
 var customerName: String
-# TODO when moving items in ticket slots, be sure to retain customerName
+# TODO make variables and set to loaded images for cooked hotdog, bun, all three toppings,
+# and all three drinks
 
 # TODO update this to be 
 # desiredTopping is array for ketchup, mayo, and relish
 # example [numKetchup: int, numMayo: int, numRelish: int]
-#func createNewSlot(numHotDogs: int, desiredToppings: Array, typeDrink: int):
+#func createNewSlot(numHotDogs: int, desiredToppings: Array, typeDrink: int, string customerName):
 func createNewSlot():
 	# for this function, need to load the sprites for cooked hot dog, toppings, 
 	# bun, and drink

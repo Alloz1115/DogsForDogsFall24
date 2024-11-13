@@ -28,7 +28,6 @@ func update():
 
 # updates a specific slot at index
 func updateForSpecificSlot(index: int):
-	#if slots[index].item.is_empty(): return
 	var inventorySlot: InventorySlot = inventory.slots[index]
 	if inventorySlot.item.is_empty(): return
 	
@@ -51,27 +50,33 @@ func onSlotClicked(slot):
 	if slot.isEmpty():
 		if !itemInHand: return
 		
-		# TODO need to add to this conditional 
-		# to check if slot.inventorySlot.slotName == "GRILL" (0) 
-		# or "DRINK_DISPENSER" (1)
 		if itemInHand.inventorySlot.isNotStacked():
+			# insertItemInSlot(slot)
+			# TODO add to another conditional 
+			# if slot.inventorySlot.slotName == "GRILL" (which equals 0) 
+				# then start grilling animation with slot.AnimationPlayer.play(animationName)
+			
+			# debugging statement
 			print("Slot is not stacked")
-			# here, there will probably be a signal 
 		
 		if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
+			# TODO if inventory.slots[slot.index].slotType == "TRASH"
+				# set itemInHand to null (trash should delete whatever is put in it)
 			print("FOOD TYPES MATCH")
 			insertItemInSlot(slot)
 		return
 	
-	# TODO change this to 
 	if !itemInHand:
-		takeItemFromSlot(slot)
 		# TODO if slot.isInfinite == true, 
-		# skip above takeItemFromSlot and do itemInHand = slot.takeItem()
+			#then itemInHand = slot.Container.itemStackGui
+			# return
+			# note: this prevents the user from "taking" the item in infinite slots
+		takeItemFromSlot(slot)
 		return
 	
 	if slot.itemStackGui.inventorySlot.foodType == itemInHand.inventorySlot.foodType:
-		# skip stacking if foodType is ticket (tickets shouldn't stack)
+		# TODO update function to skip stacking if foodType is ticket 
+		# OR slotType is "DRINK" OR slotType is "GRILL" OR slotType is "BOX"
 		if itemInHand.inventorySlot.foodType == ticketType: return
 		stackItems(slot)
 		return
@@ -111,20 +116,27 @@ func updateItemInHand():
 	if !itemInHand: return
 	itemInHand.global_position = get_global_mouse_position()
 
-# func when_submit_button_pressed
-	# when this button is pressed, get the food, drink and ticket submit slot
-	# with get_nodes_in_group(food/drink/ticket submit slot)
-	# if there is nothing in the ticket submission slot, return
-	# run function determineAccuracy
-	# else emit signal and run orderSubmitted in the root node and 
-	# return accuracy from determineAccuracy to (gameplay.gd)
-
 func determineAccuracy():
 	pass
-	# use inventory.find(node) to get inventory data for 
-	# food, drink, and ticket submission slots
-	# then for loop through ticket data
-		# compare inventoryItem names here 
+	# get food/drink/submit slot the same way as in _on_submit_order_pressed()
+	# use inventory.find(node) to get int index of node in inventory for food/drink/ticket
+	# use indexes to get slot data on food/drink/ticket with inventory[index]
+	# loop through ticket slot's data with for x in inventory[ticketIndex].item.size() - 1
+		# compare the name of ticket.item[x].slotName == food.item[x].slotName
+		# if they are the same, increase int accuracy by 1
+	# compare ticket.item[lastIndex].slotName == drink.item[lastIndex].slotName
+	# if they are the same, increase int accuracy by 1
+	# return accuracy / ticket.item.size()
 
 func _input(event):
 	updateItemInHand()
+
+
+func _on_submit_order_pressed():
+	pass
+	# when this button is pressed, get the food, drink and ticket submit slot
+	# with get_nodes_in_group(food/drink/ticket submit slot). 
+	# note: see HotDogSubmit/DrinkSubmit/TicketSubmit nodes in inventory_gui scene
+	# if there is nothing in the ticket submission slot, then return to end function early
+	# else get variable accuracy by running function determineAccuracy
+	# then emit signal orderSubmitted to run function orderSubmitted in gameplay.gd

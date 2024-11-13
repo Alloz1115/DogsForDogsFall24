@@ -1,13 +1,21 @@
 extends Node2D
 var numOfCustomers : int = 0
 var customersServed : int = 0
+#var numberOfCustomers: int = get_tree().get_nodes_in_group("customers").size()
 signal checkIfAllOrdersDone(customers_served)
 signal levelComplete
 
 
-# run this function whenever an order is submitted
+# this function runs whenever the orderSubmitted signal from 
+# inventory_gui.gd is emitted
+# TODO update parameters to have ticketSlot 
+# orderSubmitted(ticket: Button)
 func orderSubmitted():
 	customersServed += 1
+	
+	# TODO get ticket's customerName with ticket.customerName
+	# get dogCustomer with customerName with get_node(customerName)
+	# run node's moveAway function to dismiss customer
 	emit_signal("checkIfAllOrdersDone", customersServed)
 	if(customersServed == numOfCustomers):
 		levelComplete.emit()
@@ -32,13 +40,4 @@ func _on_level_complete():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-# hide()
-# when all groups are affected, pause game and put up menu to next level
-# when a card is deleted, 
-func checkStuff():
-	# var customerArr = get_nodes_in_group("customers")
-	# if customerArr == null OR customerArr.empty()
-	# pause game, put up menu to next level
 	pass

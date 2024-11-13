@@ -30,3 +30,17 @@ func takeItem():
 
 func isEmpty():
 	return !itemStackGui
+
+# TODO might need to change this to _on_water_held depending on whether
+# we want the function to run when button is pressed or held
+func _on_water_pressed():
+	pass # Replace with function body.
+	# play water animation on drinkSlot node (the parent of this node)
+
+func _on_cola_pressed():
+	pass # Replace with function body.
+	# play cola animation on drinkSlot node (the parent of this node)
+
+func _on_root_beer_pressed():
+	pass # Replace with function body.
+	# play root beer animation on drinkSlot node (the parent of this node)
