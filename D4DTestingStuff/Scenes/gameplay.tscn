@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ivl82jjco7kt"]
 
-[ext_resource type="Script" path="res://Scenes/gameplay.gd" id="1_s4k3h"]
+[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_s4k3h"]
 [ext_resource type="Texture2D" uid="uid://djcpyoi4842d" path="res://sprites/backgrounds/cityBackground.jpg" id="2_pxv2p"]
 [ext_resource type="Texture2D" uid="uid://ckhk2o7c8k8t6" path="res://sprites/kitchen.png" id="3_helwc"]
 [ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://inventory_gui.tscn" id="5_52s45"]
-[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://level_menu.tscn" id="6_7yjyt"]
+[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://Scenes/level_menu.tscn" id="6_7yjyt"]
 [ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://Scenes/dogCustomer.tscn" id="8_bv8ky"]
 
 [node name="currentScene" type="Node2D"]

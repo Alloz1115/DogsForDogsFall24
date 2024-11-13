@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://brrfrwg5bs5v"]
 
-[ext_resource type="Script" path="res://inventory_gui.gd" id="1_a4fa5"]
+[ext_resource type="Script" path="res://Scripts/inventory_gui.gd" id="1_a4fa5"]
 [ext_resource type="PackedScene" uid="uid://dncbfwy2gh543" path="res://Scenes/slot_gui.tscn" id="1_u48kv"]
 [ext_resource type="Texture2D" uid="uid://ckhk2o7c8k8t6" path="res://sprites/kitchen.png" id="2_7fa2a"]
 
