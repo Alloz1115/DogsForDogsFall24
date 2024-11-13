@@ -138,5 +138,6 @@ func _on_submit_order_pressed():
 	# with get_nodes_in_group(food/drink/ticket submit slot). 
 	# note: see HotDogSubmit/DrinkSubmit/TicketSubmit nodes in inventory_gui scene
 	# if there is nothing in the ticket submission slot, then return to end function early
-	# else get variable accuracy by running function determineAccuracy
-	# then emit signal orderSubmitted to run function orderSubmitted in gameplay.gd
+	# else, get variable accuracy by running function determineAccuracy
+	# then emit signal orderSubmitted(ticket slot) to run function 
+	# orderSubmitted(ticket slot) in gameplay.gd
