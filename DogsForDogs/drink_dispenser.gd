@@ -15,9 +15,15 @@ func _process(delta):
 func _on_dispense_button_button_down() -> void:
 	animationPlayer.play("test_animation")
 	print("button is being held down")
+	#
 # Stops animationplayer
 func _on_dispense_button_button_up() -> void:
+	var seconds = animationPlayer.get_current_animation_position()
 	animationPlayer.pause()
-	#animationPlayer.play("test_animation")
-	#print("button is being held up")
-	 # Replace with function body.
+	print(seconds)
+	#
+	
+	#have the cup not be able to be removed from the drink slot on the drink 
+	#machine until the animation has reached full
+	
+	
