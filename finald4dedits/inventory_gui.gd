@@ -62,19 +62,18 @@ func onSlotClicked(slot):
 				print("Throwing away item...")
 				return
 		
-		if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
-				insertItemInSlot(slot)
-				return
 		if itemInHand.inventorySlot.isNotStacked():
 			# if food types are the same
 			
 				if inventory.slots[slot.index].slotName == GRILL:
+					insertItemInSlot(slot)
 					slot.itemStackGui.animationPlayer.play("testGrill")
 					# play sizzling sound effect
 				return
 		else: 
 			if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
 				insertItemInSlot(slot)
+				return
 	
 	if !itemInHand:
 		# stop hot dog grilling animation if slotName == "GRILL"
