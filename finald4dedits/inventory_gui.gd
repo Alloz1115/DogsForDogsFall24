@@ -129,16 +129,24 @@ func updateItemInHand():
 	itemInHand.global_position = get_global_mouse_position()
 
 func determineAccuracy():
-	return 0
-	# get food/drink/submit slot the same way as in _on_submit_order_pressed()
-	# use inventory.find(node) to get int index of node in inventory for food/drink/ticket
-	# use indexes to get slot data on food/drink/ticket with inventory[index]
-	# loop through ticket slot's data with for x in inventory[ticketIndex].item.size() - 1
-		# compare the name of ticket.item[x].slotName == food.item[x].slotName
-		# if they are the same, increase int accuracy by 1
-	# compare ticket.item[lastIndex].slotName == drink.item[lastIndex].slotName
-	# if they are the same, increase int accuracy by 1
-	# return accuracy / ticket.item.size()
+	var accuracy: int = 0
+	var Ticket_node = get_tree().get_nodes_in_group("Ticket Submit Slot")[0]
+	var HotDog_node = get_tree().get_nodes_in_group("Hot Dog Submit Slot")[0]
+	var Drink_node = get_tree().get_nodes_in_group("Drink Submit Slot")[0]
+	var index_ticket = slots.find(Ticket_node)
+	var index_dog = slots.find(HotDog_node)
+	var index_drink = slots.find(Drink_node)
+	
+	
+	for x in min(inventory.slots[index_ticket].item.size() - 1, inventory.slots[index_dog].item.size() -1):
+		if inventory.slots[index_ticket].item[x].name == inventory.slots[index_dog].item[x].name:
+			accuracy += 1
+	
+	if inventory.slots[index_drink].item[-1].name == inventory.slots[index_drink].item[-1].name:
+			accuracy += 1
+	print (str(accuracy))
+	return accuracy / inventory.slots[index_ticket].item.size()
+
 
 func _input(event):
 	updateItemInHand()
@@ -151,8 +159,7 @@ func _on_submit_order_pressed():
 	var ticketSlotIndex = slots.find(ticketSlot)
 	var foodSlot = get_tree().get_nodes_in_group("Hot Dog Submit Slot")[0]
 	var foodSlotIndex = slots.find(foodSlot)
-	var accuracy: int = 0
-	
+	var accuracy =  determineAccuracy()
 	if inventory.slots[ticketSlotIndex].item.is_empty(): return
 	var customerName: String = inventory.slots[ticketSlotIndex].customerName
 	var food = inventory.slots[foodSlotIndex].item
