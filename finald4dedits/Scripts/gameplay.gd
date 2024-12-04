@@ -1,30 +1,32 @@
 extends Node2D
 var numOfCustomers : int = 0
 var customersServed : int = 0
-#var numberOfCustomers: int = get_tree().get_nodes_in_group("customers").size()
 signal checkIfAllOrdersDone(customers_served)
 signal levelComplete
-
+@onready var inventory_gui = $InventoryGUI
 
 # this function runs whenever the orderSubmitted signal from 
 # inventory_gui.gd is emitted
-# TODO update parameters to have ticketSlot 
-# orderSubmitted(ticket: Button)
-func orderSubmitted():
+func orderSubmitted(accuracy, customerName):
 	customersServed += 1
-	
+	print("THIS IS A TEST FOR ORDER SUBMISSION")
 	# TODO get ticket's customerName with ticket.customerName
-	# get dogCustomer with customerName with get_node(customerName)
 	# run node's moveAway function to dismiss customer
-	emit_signal("checkIfAllOrdersDone", customersServed)
+	print("CUSTOMER TO BISMISS IS " + customerName)
+	var customerToDismiss = get_node(customerName)
+	customerToDismiss.moveAway()
+	
 	if(customersServed == numOfCustomers):
-		levelComplete.emit()
+		$"levelMenu/CenterContainer/VBoxContainer/score".text = str(accuracy)
+		_on_level_complete()
+		# update score to $levelMenu.label
 		return
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# hide level menu
 	$levelMenu.hide()
+	inventory_gui.orderSubmitted.connect(orderSubmitted)
 	# prints the amount of customers in current scene
 	levelComplete.connect(_on_level_complete)
 	var array = get_tree().get_nodes_in_group("customers")
@@ -37,7 +39,3 @@ func _ready():
 func _on_level_complete():
 	get_tree().paused = true
 	$levelMenu.show()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

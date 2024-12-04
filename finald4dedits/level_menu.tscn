@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ci4acl0fbmg5w"]
 
 [node name="levelMenu" type="Node2D"]
+process_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_right = 1156.0

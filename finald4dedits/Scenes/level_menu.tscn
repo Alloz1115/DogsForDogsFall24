@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://ci4acl0fbmg5w"]
+[gd_scene load_steps=2 format=3 uid="uid://ci4acl0fbmg5w"]
 
-[node name="levelMenu" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/level_menu.gd" id="1_j1u6p"]
+
+[node name="levelMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j1u6p")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_right = 1156.0
 offset_bottom = 655.0
 
@@ -19,3 +26,5 @@ text = "Your score:"
 [node name="nextLevel" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "next level"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/nextLevel" to="." method="_on_next_level_pressed"]

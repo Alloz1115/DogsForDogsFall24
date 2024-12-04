@@ -18,9 +18,14 @@ func removeSlot(inventorySlot: InventorySlot):
 	var index = slots.find(inventorySlot)
 	if index < 0: return
 	var oldSlotType = slots[index].foodType
+	var oldSlotName = slots[index].slotName
 	slots[index] = InventorySlot.new()
 	slots[index].foodType = oldSlotType
-	# might need to update GUI later idk what I'm doing dude
+	slots[index].slotName = oldSlotName
 
 func insertSlot(index: int, inventorySlot: InventorySlot):
+	var oldSlotType = slots[index].foodType
+	var oldSlotName = slots[index].slotName
 	slots[index] = inventorySlot
+	slots[index].foodType = oldSlotType
+	slots[index].slotName = oldSlotName

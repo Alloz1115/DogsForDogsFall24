@@ -9,8 +9,12 @@ var order_card = load("res://Scenes/order_card.tscn")
 var goToXMinimum = 100
 var goToXMaximum = 800
 # TODO create these export variables:
-# int numHotDogs, int numKetchup, int numMustard, int numRelish
-# export_enum(“WATER”, “COLA”, “ROOTBEER”) drinkType int
+@export var numHotDogs: int = 0
+@export var numKetchup: int = 0
+@export var numMayo: int = 0
+@export var numRelish: int = 0
+@export_enum("NONE", "COLA", "ROOTBEER", "WATER") var drinkType: int
+var customerName: String
 
 func _ready():
 	var goToX = randi_range(goToXMinimum, goToXMaximum)
@@ -20,9 +24,6 @@ func _ready():
 	var tween = get_tree().create_tween()
 	# move to player's view
 	tween.tween_property(self, "position", Vector2(goToX, self.global_position.y), 3).set_ease(Tween.EASE_OUT)
-
-func _physics_process(_delta):
-	pass
 
 # fix animation
 func _on_button_pressed():
@@ -37,24 +38,28 @@ func _on_button_pressed():
 		newOrderTicket.foodType = ticketType
 
 		# TODO get string customerName with self.get_path()
-		# TODO update createNewSlot so that it has the appropriate parameters
-		# (numHotDogs: int, desiredToppings: Array, typeDrink: int, customerName: string):
-		newOrderTicket.createNewSlot()
+		customerName = self.get_path()
+
+		newOrderTicket.createNewSlot(numHotDogs, numKetchup, numMayo, numRelish, drinkType)
+		newOrderTicket.customerName = self.get_name()
 		var firstNodeIndexNumber = slots.find(firstAvailableNode)
+		# set customer name to slot
+		inventory.slots[firstNodeIndexNumber].customerName = customerName
 		
 		inventory.insertSlot(firstNodeIndexNumber, newOrderTicket)
 		inventoryGUI.updateForSpecificSlot(firstNodeIndexNumber)
 		
 		# destroy button so it doesn't make duplicate tickets
+		print(str(inventory.slots[firstNodeIndexNumber].customerName))
 		$Button.queue_free()
-		print("BUTTON HAS BEEN ERASED")
 
 # this function should only be called when this customer's order
 # is submitted 
 # TODO update this to have updated parameters
 # (customerName: string) - has absolute path of specific dogCustomer instance
 func moveAway():
-	pass
-	# get specific dogCustomer instance with get_node(customerName)
-	# create a tween that moves dogCustomer instance off screen 
-	# when the tween is finished, delete this dogCustomer instance
+	var tween = get_tree().create_tween()
+	# move to player's view
+	tween.tween_property(self, "position", Vector2(-50, self.global_position.y), entryDelaySeconds).set_ease(Tween.EASE_OUT)
+	await get_tree().create_timer(entryDelaySeconds).timeout
+	queue_free()

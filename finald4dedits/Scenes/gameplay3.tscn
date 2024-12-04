@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqtrcvucvfp4f"]
+
+[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_11oak"]
+[ext_resource type="Texture2D" uid="uid://djcpyoi4842d" path="res://sprites/backgrounds/cityBackground.jpg" id="2_yx4pb"]
+[ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://Scenes/dogCustomer.tscn" id="3_1ituj"]
+[ext_resource type="Texture2D" uid="uid://ckhk2o7c8k8t6" path="res://sprites/kitchen.png" id="4_r0rfu"]
+[ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://Scenes/inventory_gui.tscn" id="5_hhjp3"]
+[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://level_menu.tscn" id="6_f73dl"]
+
+[node name="gameplay3" type="Node2D"]
+script = ExtResource("1_11oak")
+
+[node name="CityBackground" type="Sprite2D" parent="."]
+texture = ExtResource("2_yx4pb")
+centered = false
+
+[node name="DogCustomer" parent="." groups=["customers"] instance=ExtResource("3_1ituj")]
+position = Vector2(-253, 429)
+entryDelaySeconds = 5
+
+[node name="DogCustomer2" parent="." groups=["customers"] instance=ExtResource("3_1ituj")]
+position = Vector2(1403, 425)
+entryDelaySeconds = 2
+
+[node name="DogCustomer3" parent="." groups=["customers"] instance=ExtResource("3_1ituj")]
+position = Vector2(1251, 421)
+
+[node name="DogCustomer4" parent="." groups=["customers"] instance=ExtResource("3_1ituj")]
+position = Vector2(-105, 432)
+entryDelaySeconds = 8
+
+[node name="Kitchen" type="Sprite2D" parent="."]
+position = Vector2(576, 334)
+texture = ExtResource("4_r0rfu")
+
+[node name="InventoryGUI" parent="." instance=ExtResource("5_hhjp3")]
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 227.0
+offset_top = 366.0
+offset_right = 592.0
+offset_bottom = 389.0
+text = "Bun Box"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 609.0
+offset_top = 375.0
+offset_right = 974.0
+offset_bottom = 398.0
+text = "Ticket Submission"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 438.0
+offset_top = 530.0
+offset_right = 803.0
+offset_bottom = 553.0
+text = "Hot Dog Submission"
+horizontal_alignment = 1
+
+[node name="levelMenu" parent="." instance=ExtResource("6_f73dl")]
+visible = false
