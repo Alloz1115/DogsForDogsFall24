@@ -36,18 +36,30 @@ func isEmpty():
 func _on_water_pressed():
 	if !isEmpty():
 		itemStackGui.animationPlayer.play("test")
-		# get the node, not the class instance? 
+		# play soda sfx
+		$AudioStreamPlayer2D.play()
 	else:
 		print("There is no drink in here!")
 	# play water animation on drinkSlot node (the parent of this node)
 	# if there is a cup present in the water slot
 
 func _on_cola_pressed():
-	pass # Replace with function body.
+	if !isEmpty():
+		itemStackGui.animationPlayer.play("colaFill")
+		# play soda sfx
+		$AudioStreamPlayer2D.play()
+	else:
+		print("There is no drink in here!")
+	 # Replace with function body.
 	# play cola animation on drinkSlot node (the parent of this node)
 	# if there is a cup present in the cola slot
 
 func _on_root_beer_pressed():
-	pass # Replace with function body.
+	if !isEmpty():
+		itemStackGui.animationPlayer.play("rootBeerFill")
+		# play soda sfx
+		$AudioStreamPlayer2D.play()
+	else:
+		print("There is no drink in here!")
 	# play root beer animation on drinkSlot node (the parent of this node)
 	# if there is a cup present in the root beer slot

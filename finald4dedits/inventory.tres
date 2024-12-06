@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=29 format=3 uid="uid://71qjf8v0vh0v"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=37 format=3 uid="uid://71qjf8v0vh0v"]
 
 [ext_resource type="Resource" uid="uid://dgxtuly7rfqfg" path="res://inventoryItem.tres" id="1_f5s7q"]
 [ext_resource type="Script" path="res://inventory.gd" id="2_ymns8"]
 [ext_resource type="Script" path="res://inventorySlot.gd" id="3_6ft4k"]
 [ext_resource type="Script" path="res://inventoryItem.gd" id="4_u0bit"]
+[ext_resource type="Texture2D" uid="uid://b7l2q7ljt477i" path="res://sprites/bun.png" id="5_d6m3l"]
 [ext_resource type="Texture2D" uid="uid://fvh0nqbco8ly" path="res://sprites/cups/cupEmpty.png" id="5_h6uve"]
+[ext_resource type="Texture2D" uid="uid://b6b7ugy4ifd4v" path="res://sprites/toppings/ketchup.png" id="6_olrnv"]
+[ext_resource type="Texture2D" uid="uid://ckvm8dnrd58kc" path="res://sprites/toppings/mayo.png" id="7_ymylf"]
+[ext_resource type="Texture2D" uid="uid://bbwy3c7xvyt1x" path="res://sprites/toppings/relish.png" id="8_epxsy"]
 
 [sub_resource type="Resource" id="Resource_wx66i"]
 script = ExtResource("3_6ft4k")
@@ -36,10 +40,15 @@ slotName = 0
 item = Array[ExtResource("4_u0bit")]([])
 foodType = 0
 
+[sub_resource type="Resource" id="Resource_jjqri"]
+script = ExtResource("4_u0bit")
+name = "bun"
+texture = ExtResource("5_d6m3l")
+
 [sub_resource type="Resource" id="Resource_35m62"]
 script = ExtResource("3_6ft4k")
 slotName = 10
-item = Array[ExtResource("4_u0bit")]([])
+item = Array[ExtResource("4_u0bit")]([SubResource("Resource_jjqri")])
 foodType = 3
 
 [sub_resource type="Resource" id="Resource_2b40h"]
@@ -123,24 +132,39 @@ texture = ExtResource("5_h6uve")
 script = ExtResource("3_6ft4k")
 slotName = 14
 item = Array[ExtResource("4_u0bit")]([SubResource("Resource_uu2f6")])
-foodType = 1
+foodType = 3
+
+[sub_resource type="Resource" id="Resource_2w456"]
+script = ExtResource("4_u0bit")
+name = "ketchup"
+texture = ExtResource("6_olrnv")
 
 [sub_resource type="Resource" id="Resource_qssao"]
 script = ExtResource("3_6ft4k")
 slotName = 11
-item = Array[ExtResource("4_u0bit")]([])
+item = Array[ExtResource("4_u0bit")]([SubResource("Resource_2w456")])
 foodType = 3
+
+[sub_resource type="Resource" id="Resource_qy4v3"]
+script = ExtResource("4_u0bit")
+name = "mayo"
+texture = ExtResource("7_ymylf")
 
 [sub_resource type="Resource" id="Resource_md7n6"]
 script = ExtResource("3_6ft4k")
 slotName = 12
-item = Array[ExtResource("4_u0bit")]([])
+item = Array[ExtResource("4_u0bit")]([SubResource("Resource_qy4v3")])
 foodType = 3
+
+[sub_resource type="Resource" id="Resource_o68a8"]
+script = ExtResource("4_u0bit")
+name = "relish"
+texture = ExtResource("8_epxsy")
 
 [sub_resource type="Resource" id="Resource_d4rve"]
 script = ExtResource("3_6ft4k")
 slotName = 13
-item = Array[ExtResource("4_u0bit")]([])
+item = Array[ExtResource("4_u0bit")]([SubResource("Resource_o68a8")])
 foodType = 3
 
 [resource]

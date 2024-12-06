@@ -5,6 +5,7 @@ func _ready():
 	currentScene = get_tree().get_current_scene().get_name()
 
 func _on_next_level_pressed():
+	print("pause menu button pressed")
 	match currentScene:
 		"gameplay":
 			print("This is the first level")

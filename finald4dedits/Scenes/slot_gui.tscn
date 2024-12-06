@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dncbfwy2gh543"]
+[gd_scene load_steps=3 format=3 uid="uid://dncbfwy2gh543"]
 
 [ext_resource type="Script" path="res://Scripts/slot_gui.gd" id="1_f05cd"]
+[ext_resource type="AudioStream" uid="uid://nscbdopa3pgq" path="res://sfx/SodaPouring.mp3" id="2_iwdbr"]
 
 [node name="Slot" type="Button"]
-offset_right = 190.0
+offset_right = 173.0
 offset_bottom = 80.0
 script = ExtResource("1_f05cd")
 
@@ -13,5 +14,9 @@ centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 130.0
+offset_left = -20.0
+offset_right = 165.0
+offset_bottom = 25.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_iwdbr")

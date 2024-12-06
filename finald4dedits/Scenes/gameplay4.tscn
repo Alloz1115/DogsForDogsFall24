@@ -1,58 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://epu6u76je5cq"]
+[gd_scene load_steps=11 format=3 uid="uid://nnj8sroyx722"]
 
-[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_3d45c"]
-[ext_resource type="Texture2D" uid="uid://djcpyoi4842d" path="res://sprites/backgrounds/cityBackground.jpg" id="2_lm3ni"]
-[ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://Scenes/dogCustomer.tscn" id="3_m8x4r"]
-[ext_resource type="Texture2D" uid="uid://ckhk2o7c8k8t6" path="res://sprites/kitchen.png" id="4_ckelr"]
-[ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://Scenes/inventory_gui.tscn" id="5_vx64t"]
-[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://level_menu.tscn" id="6_mlmoj"]
+[ext_resource type="Script" path="res://Scripts/gameplay.gd" id="1_vyv62"]
+[ext_resource type="Texture2D" uid="uid://djcpyoi4842d" path="res://sprites/backgrounds/cityBackground.jpg" id="2_xncrj"]
+[ext_resource type="PackedScene" uid="uid://ccjfts8kkhc6h" path="res://Scenes/dogCustomer.tscn" id="3_yfig1"]
+[ext_resource type="PackedScene" uid="uid://bdiknv1nb3e31" path="res://Scenes/dogCustomer2.tscn" id="4_gavuj"]
+[ext_resource type="PackedScene" uid="uid://c2erfmkdpfr0r" path="res://Scenes/dogCustomer3.tscn" id="5_881y1"]
+[ext_resource type="PackedScene" uid="uid://dodp3jdfvaths" path="res://Scenes/dogCustomer4.tscn" id="6_d0qki"]
+[ext_resource type="Texture2D" uid="uid://ckhk2o7c8k8t6" path="res://sprites/kitchen.png" id="7_pm4wa"]
+[ext_resource type="PackedScene" uid="uid://brrfrwg5bs5v" path="res://Scenes/inventory_gui.tscn" id="8_uuu7n"]
+[ext_resource type="PackedScene" uid="uid://ci4acl0fbmg5w" path="res://level_menu.tscn" id="9_wg7v0"]
+[ext_resource type="AudioStream" uid="uid://cof52tb1oktys" path="res://sfx/GameTheme.ogg" id="10_vjf3l"]
 
-[node name="gameplay4" type="Node2D"]
-script = ExtResource("1_3d45c")
+[node name="gameplay" type="Node2D"]
+script = ExtResource("1_vyv62")
 
 [node name="CityBackground" type="Sprite2D" parent="."]
-texture = ExtResource("2_lm3ni")
+texture = ExtResource("2_xncrj")
 centered = false
 
-[node name="DogCustomer" parent="." groups=["customers"] instance=ExtResource("3_m8x4r")]
-position = Vector2(-253, 429)
+[node name="DogCustomer4" parent="." groups=["customers"] instance=ExtResource("3_yfig1")]
+position = Vector2(-201, 432)
+entryDelaySeconds = 12
+numHotDogs = 3
+numKetchup = 1
+numRelish = 1
+drinkType = 1
+
+[node name="DogCustomer5" parent="." groups=["customers"] instance=ExtResource("4_gavuj")]
+position = Vector2(1441, 415)
 entryDelaySeconds = 5
+numHotDogs = 1
+numKetchup = 1
 
-[node name="DogCustomer2" parent="." groups=["customers"] instance=ExtResource("3_m8x4r")]
-position = Vector2(1403, 425)
-entryDelaySeconds = 2
-
-[node name="DogCustomer3" parent="." groups=["customers"] instance=ExtResource("3_m8x4r")]
-position = Vector2(1251, 421)
-
-[node name="DogCustomer4" parent="." groups=["customers"] instance=ExtResource("3_m8x4r")]
-position = Vector2(-105, 432)
+[node name="DogCustomer6" parent="." groups=["customers"] instance=ExtResource("5_881y1")]
+position = Vector2(1491, 446)
 entryDelaySeconds = 8
+numHotDogs = 1
+numKetchup = 1
+numMayo = 1
+numRelish = 1
+
+[node name="DogCustomer7" parent="." groups=["customers"] instance=ExtResource("6_d0qki")]
+position = Vector2(-180, 403)
+entryDelaySeconds = 15
+numHotDogs = 1
+numRelish = 1
+drinkType = 1
 
 [node name="Kitchen" type="Sprite2D" parent="."]
 position = Vector2(576, 334)
-texture = ExtResource("4_ckelr")
+texture = ExtResource("7_pm4wa")
 
-[node name="InventoryGUI" parent="." instance=ExtResource("5_vx64t")]
+[node name="InventoryGUI" parent="." instance=ExtResource("8_uuu7n")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 mouse_filter = 1
 
-[node name="Label" type="Label" parent="."]
-offset_left = 227.0
-offset_top = 366.0
-offset_right = 592.0
-offset_bottom = 389.0
-text = "Bun Box"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 609.0
-offset_top = 375.0
-offset_right = 974.0
-offset_bottom = 398.0
+[node name="ticketLabel" type="Label" parent="."]
+offset_left = 435.0
+offset_top = 439.0
+offset_right = 800.0
+offset_bottom = 462.0
 text = "Ticket Submission"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="hotDogLabel" type="Label" parent="."]
 offset_left = 438.0
 offset_top = 530.0
 offset_right = 803.0
@@ -60,5 +77,9 @@ offset_bottom = 553.0
 text = "Hot Dog Submission"
 horizontal_alignment = 1
 
-[node name="levelMenu" parent="." instance=ExtResource("6_mlmoj")]
+[node name="levelMenu" parent="." instance=ExtResource("9_wg7v0")]
 visible = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_vjf3l")
+autoplay = true

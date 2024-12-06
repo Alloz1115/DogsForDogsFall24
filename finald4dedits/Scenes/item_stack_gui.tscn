@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://pje43bjk3dyw"]
+[gd_scene load_steps=14 format=3 uid="uid://pje43bjk3dyw"]
 
 [ext_resource type="Script" path="res://item_stack_gui.gd" id="1_w1ctg"]
-[ext_resource type="Texture2D" uid="uid://b7l2q7ljt477i" path="res://sprites/bun.png" id="2_8pnca"]
 [ext_resource type="Texture2D" uid="uid://ddij8nfv04mho" path="res://sprites/hotDogs/hotDogPartlyCooked.png" id="2_85yyk"]
 [ext_resource type="Texture2D" uid="uid://c2jrnysicm33p" path="res://sprites/cups/cupWater.png" id="2_gr41y"]
 [ext_resource type="Texture2D" uid="uid://da8vjpgktgji2" path="res://sprites/hotDogs/hotDogCooked.png" id="4_11jay"]
 [ext_resource type="Texture2D" uid="uid://b3dd1ierc2dn2" path="res://sprites/hotDogs/hotDogBurnt.png" id="5_2e5qn"]
+[ext_resource type="Texture2D" uid="uid://kbvinj8hsiqu" path="res://sprites/cups/cupCola.png" id="6_uqfxc"]
+[ext_resource type="Texture2D" uid="uid://cpfvl23yavg13" path="res://sprites/cups/cupRootBeer.png" id="7_p3f3a"]
 
 [sub_resource type="Animation" id="Animation_uqbtb"]
 resource_name = "test"
@@ -35,13 +36,94 @@ tracks/0/keys = {
 "times": PackedFloat32Array(1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_11jay"), ExtResource("2_85yyk"), ExtResource("5_2e5qn")]
+"values": [ExtResource("2_85yyk"), ExtResource("4_11jay"), ExtResource("5_2e5qn")]
+}
+
+[sub_resource type="Animation" id="Animation_mvwav"]
+resource_name = "waterFill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/item:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gr41y")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".updateItemName")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5un3y"]
+resource_name = "colaFill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/item:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_uqfxc")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".updateItemName")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ktj3o"]
+resource_name = "rootBeerFill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/item:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_p3f3a")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".updateItemName")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3784l"]
 _data = {
+"colaFill": SubResource("Animation_5un3y"),
+"rootBeerFill": SubResource("Animation_ktj3o"),
 "test": SubResource("Animation_uqbtb"),
-"testGrill": SubResource("Animation_e8j3j")
+"testGrill": SubResource("Animation_e8j3j"),
+"waterFill": SubResource("Animation_mvwav")
 }
 
 [node name="Panel" type="Panel"]
@@ -65,15 +147,15 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 53.0
-offset_top = 71.0
-offset_right = 163.0
-offset_bottom = 70.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 20.0
 mouse_filter = 2
 
 [node name="item" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(-52, -71)
-texture = ExtResource("2_8pnca")
+position = Vector2(0, -22)
+texture = ExtResource("2_85yyk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -17,14 +17,16 @@ func orderSubmitted(accuracy, customerName):
 	customerToDismiss.moveAway()
 	
 	if(customersServed == numOfCustomers):
-		$"levelMenu/CenterContainer/VBoxContainer/score".text = str(accuracy)
+		$"levelMenu/CenterContainer/VBoxContainer/score".text = str("Your score is: " + str(accuracy))
 		_on_level_complete()
 		# update score to $levelMenu.label
 		return
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("SCENE IS READY")
 	# hide level menu
+	get_tree().paused = false
 	$levelMenu.hide()
 	inventory_gui.orderSubmitted.connect(orderSubmitted)
 	# prints the amount of customers in current scene
@@ -35,6 +37,7 @@ func _ready():
 	else:
 		print("There are " + str(array.size()) + " customers.")
 		numOfCustomers = array.size()
+	# play background music on loop
 
 func _on_level_complete():
 	get_tree().paused = true

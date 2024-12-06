@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxjkyey85hsmm"]
+[gd_scene load_steps=4 format=3 uid="uid://bxjkyey85hsmm"]
 
+[ext_resource type="Texture2D" uid="uid://djcpyoi4842d" path="res://sprites/backgrounds/cityBackground.jpg" id="1_4wakw"]
 [ext_resource type="Script" path="res://Scenes/startButton.gd" id="1_ho015"]
 [ext_resource type="Script" path="res://Scenes/quitGame.gd" id="2_kst57"]
 
@@ -17,6 +18,11 @@ offset_right = 1196.0
 offset_bottom = 680.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CityBackground" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(48, 33)
+texture = ExtResource("1_4wakw")
+centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2

@@ -9,7 +9,9 @@ var ticketType: int = 4
 signal orderSubmitted(accuracy, customerName)
 var TRASH: int = 5
 var GRILL: int = 0
-var BOX: int = 2
+var BOX: int = 3
+var TICKET: int = 4
+var PLATE: int = 3
 
 func _ready():
 	connectSlots()
@@ -52,28 +54,72 @@ func connectSlots():
 func onSlotClicked(slot):
 	if slot.isEmpty():
 		if !itemInHand: return
-		
 		# first, throw away to trash if applicable
 		# TODO add && itemInHand is not a ticket
-		if inventory.slots[slot.index].slotName == TRASH:
-			# how do I delete the instance? 
+		if inventory.slots[slot.index].slotName == TRASH && itemInHand.inventorySlot.foodType != 5:
 				itemInHand.queue_free()
 				itemInHand = null
 				print("Throwing away item...")
 				return
 		
+		# if the current ItemInHand is not stacked
 		if itemInHand.inventorySlot.isNotStacked():
 			# if food types are the same
-			
-				if inventory.slots[slot.index].slotName == GRILL:
+				print("item in hand is not stacked")
+				if inventory.slots[slot.index].slotName == GRILL &&  itemInHand.inventorySlot.slotName == 9:
 					insertItemInSlot(slot)
 					slot.itemStackGui.animationPlayer.play("testGrill")
-					# play sizzling sound effect
-				return
+					# play sizzling sfx
+					$AudioStreamPlayer2D.play()
+					
+					return
+				if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType || (inventory.slots[slot.index].slotName == PLATE && itemInHand.inventorySlot.foodType ==0):
+					print("testing line, don't mind me")
+					insertItemInSlot(slot)
+					return
+				# toppings case
+				if inventory.slots[slot.index].foodType == 0 && inventory.slots[slot.index].slotName == 3 && itemInHand.inventorySlot.foodType == 3:
+					print("adding to plate...")
+					insertItemInSlot(slot)
+					return
+				# cup case
+				# if slot foodType is 1 and itemInHand slotName is 14
+				if inventory.slots[slot.index].foodType == 1 && itemInHand.inventorySlot.slotName == 14:
+					print("inserting cup...")
+					insertItemInSlot(slot)
+					return
 		else: 
-			if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
+			# only insert if slotName is PLATE
+			#if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
+			if inventory.slots[slot.index].foodType == PLATE:
 				insertItemInSlot(slot)
 				return
+			# ticket case 
+			if inventory.slots[slot.index].foodType == 5 && itemInHand.inventorySlot.foodType == 5:
+				insertItemInSlot(slot)
+				return
+			if inventory.slots[slot.index].foodType == 0 && inventory.slots[slot.index].slotName == 5 && itemInHand.inventorySlot.foodType == 0:
+				print("adding to plate...")
+				insertItemInSlot(slot)
+				return
+
+	else:
+		if itemInHand:
+			if inventory.slots[slot.index].foodType == 0 && inventory.slots[slot.index].slotName == 3 && itemInHand.inventorySlot.foodType == 3:
+				print("adding to plate...")
+				stackItems(slot)
+				return
+			if inventory.slots[slot.index].foodType == 0 && itemInHand.inventorySlot.foodType == 0:
+				stackItems(slot)
+				return
+		# stacking hot dogs
+		
+		# we know that all boxes are not empty
+			print("foodType" + str(inventory.slots[slot.index].foodType))
+			if inventory.slots[slot.index].foodType == BOX:
+				print("Item is a box, returning...")
+				return
+		
 	
 	if !itemInHand:
 		# stop hot dog grilling animation if slotName == "GRILL"
@@ -82,15 +128,9 @@ func onSlotClicked(slot):
 		takeItemFromSlot(slot)
 		# note: this prevents the user from "taking" the item in infinite slots
 		if inventory.slots[slot.index].foodType == BOX:
+			print("slot name is "+ str(itemInHand.inventorySlot.slotName))
 			inventory.slots[slot.index].replaceBoxItem(itemInHand.inventorySlot.slotName)
 			updateForSpecificSlot(slot.index)
-		return
-	
-	if inventory.slots[slot.index].foodType == itemInHand.inventorySlot.foodType:
-		# TODO update function to skip stacking if foodType is ticket 
-		# OR slotType is "DRINK" OR slotType is "GRILL" OR slotType is "BOX"
-		if itemInHand.inventorySlot.foodType == ticketType: return
-		stackItems(slot)
 		return
 
 func takeItemFromSlot(slot):
@@ -137,14 +177,18 @@ func determineAccuracy():
 	var index_dog = slots.find(HotDog_node)
 	var index_drink = slots.find(Drink_node)
 	
+	# might not have food or drink
+	# if food array is empty, skip
+	# else for x in min(ticket array - 1, hot dog array - 1
+	if !(inventory.slots[index_dog].item.is_empty()):
+		for x in min(inventory.slots[index_ticket].item.size() - 1, inventory.slots[index_dog].item.size() -1):
+			if inventory.slots[index_ticket].item[x].name == inventory.slots[index_dog].item[x].name:
+				accuracy += 1
 	
-	for x in min(inventory.slots[index_ticket].item.size() - 1, inventory.slots[index_dog].item.size() -1):
-		if inventory.slots[index_ticket].item[x].name == inventory.slots[index_dog].item[x].name:
-			accuracy += 1
-	
-	if inventory.slots[index_drink].item[-1].name == inventory.slots[index_drink].item[-1].name:
-			accuracy += 1
-	print (str(accuracy))
+	if !(inventory.slots[index_drink].item.is_empty()):
+		if inventory.slots[index_drink].item[-1].name == inventory.slots[index_drink].item[-1].name:
+				accuracy += 1
+	print ("Accuracy is " + str(accuracy))
 	return accuracy / inventory.slots[index_ticket].item.size()
 
 
@@ -169,7 +213,7 @@ func _on_submit_order_pressed():
 	for x in inventory.slots[ticketSlotIndex].item.size() - 1:
 		# if there are no more food items, end loop early
 		if x >= food.size(): continue
-		if ticket[x].slotName == food[x].slotName:
+		if ticket[x].name == food[x].name:
 			accuracy += 1
 	# compare drink and ticket
 	if !(drink.is_empty()):

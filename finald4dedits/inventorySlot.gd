@@ -8,7 +8,8 @@ class_name InventorySlot
 @export_enum("FOOD", "DRINK", "GRILL", "BOX", "DISPENSER", "TICKET", "TRASH") var foodType: int
 var customerName: String
 # preloaded images
-var hotDogTexture = load("res://sprites/hotDogs/hotDogCooked.png")
+var hotDogRawTexture = load("res://sprites/hotDogs/hotDogRaw.png")
+var hotDogCookedTexture = load("res://sprites/hotDogs/hotDogCooked.png")
 var bunTexture = load("res://sprites/bun.png")
 var ketchupTexture = load("res://sprites/toppings/ketchup.png")
 var mayoTexture = load("res://sprites/toppings/mayo.png")
@@ -23,13 +24,22 @@ func createNewSlot(numHotDogs: int, numKetchup: int, numMayo: int, numRelish: in
 	# for this function, need to load the sprites for cooked hot dog, toppings, 
 	# bun, and drink
 	slotName = 3
-	# assumes there is only 1 hot dog bun perorder
-	var numBuns = 1
 	
+	if drinkType != 0:
+		var newDrink = InventoryItem.new()
+		var newDrinkResourcePath = drinkArray[drinkType].resource_path
+		newDrink.name = newDrinkResourcePath.get_file().get_basename()
+		newDrink.texture = drinkArray[drinkType]
+		item.append(newDrink)
+	# assumes there is only 1 hot dog bun perorder
+	var newBun = InventoryItem.new()
+	newBun.name = "bun"
+	newBun.texture = bunTexture
+	item.append(newBun)
 	for hotDogs in numHotDogs: 
 		var newHotDog = InventoryItem.new()
-		newHotDog.name = "hot dog"
-		newHotDog.texture = hotDogTexture
+		newHotDog.name = "hotDog"
+		newHotDog.texture = hotDogCookedTexture
 		item.append(newHotDog)
 	for ketchup in numKetchup:
 		var newKetchup = InventoryItem.new()
@@ -47,19 +57,13 @@ func createNewSlot(numHotDogs: int, numKetchup: int, numMayo: int, numRelish: in
 		newRelish.texture = relishTexture
 		item.append(newRelish)
 	
-	if drinkType != 0:
-		var newDrink = InventoryItem.new()
-		var newDrinkResourcePath = drinkArray[drinkType].resource_path
-		newDrink.name = newDrinkResourcePath.get_file().get_basename()
-		newDrink.texture = drinkArray[drinkType]
-		item.append(newDrink)
 
 func replaceBoxItem(itemType: int):
 	var newItem = InventoryItem.new()
 	match itemType:
 		9: # index for HOTDOGBOX
 			newItem.name = "hotDog"
-			newItem.texture = hotDogTexture
+			newItem.texture = hotDogRawTexture
 		10: #BUNBOX
 			newItem.name = "bun"
 			newItem.texture = bunTexture

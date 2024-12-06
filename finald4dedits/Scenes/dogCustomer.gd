@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-#@onready var state_machine = $AnimationTree["parameters/playback"]
 var order_card = load("res://Scenes/order_card.tscn")
 @onready var inventory: Inventory = preload("res://inventory.tres")
 @onready var inventoryGUI = $"../InventoryGUI"
@@ -21,6 +20,7 @@ func _ready():
 	# create tween from current position to random int x value
 	# wait for x seconds, then tween to player's view
 	await get_tree().create_timer(entryDelaySeconds).timeout
+	# play dog bark sfx
 	var tween = get_tree().create_tween()
 	# move to player's view
 	tween.tween_property(self, "position", Vector2(goToX, self.global_position.y), 3).set_ease(Tween.EASE_OUT)
